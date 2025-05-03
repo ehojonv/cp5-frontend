@@ -19,21 +19,21 @@
 
 # Organização
 ---
-- [ ] Criar e montar (usando TailwindCSS) as páginas:
-    - [ ] /login (Pública)
-    - [ ] /cad-user (Pública)
-    - [ ] /home (Autenticada)
-    - [ ] /listagem (Autenticada)
-    - [ ] /update (Autenticada)
-- [ ] Criar e montar (usando TailwindCSS) as páginas/caminhos auxiliares da página /listagem:
-    1. [ ] Serviços de saúde e rabilitação
-    2. [ ] Beneficios e direitos
-    3. [ ] Emprego e profissionalização
-    4. [ ] Educação Inclusiva
-    5. [ ] Acessibilidade Urbana e Mobilidade
-    6. [ ] Comunidades e Apoio Psicológico
-    7. [ ] Produtos e Tecnologia Assistiva
-    8. [ ] Denuncias e Reclamações
+- [X] Criar e [ ] montar (usando TailwindCSS) as páginas:
+    - [X] [ ] /login (Pública)
+    - [X] [ ] /cad-user (Pública)
+    - [X] [ ] /home (Autenticada)
+    - [X] [ ] /listagem (Autenticada)
+    - [X] [ ] /update (Autenticada)
+- [ ] Criar e [ ] montar (usando TailwindCSS) as páginas/caminhos auxiliares da página /listagem:
+    1. [ ] [ ] Serviços de saúde e rabilitação
+    2. [ ] [ ] Beneficios e direitos
+    3. [ ] [ ] Emprego e profissionalização
+    4. [ ] [ ] Educação Inclusiva
+    5. [ ] [ ] Acessibilidade Urbana e Mobilidade
+    6. [ ] [ ] Comunidades e Apoio Psicológico
+    7. [ ] [ ] Produtos e Tecnologia Assistiva
+    8. [ ] [ ] Denuncias e Reclamações
 - [ ] Organizar o LocalStorage com usuários placeholder
 - [ ] Organizar o funcionamento dos cookies
 - [ ] Organização da autenticação/criação de novo, usuário
