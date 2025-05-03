@@ -20,5 +20,14 @@ O **Portal-PCD** é um projeto desenvolvido com o objetivo de simular a navegaç
 
 O Portal-PCD busca oferecer uma experiência digital inclusiva, garantindo que pessoas com deficiência possam acessar informações e navegar no site de forma simples e eficiente.
 
+## Como usar
+Primeiro rode o projeto com:
+
+```bash
+npm run dev
+```
+
+Abra [http://localhost:3000](http://localhost:3000) com o seu browser para ver o projeto.
+
 ---
 Feito com ❤️ para promover a inclusão digital.
