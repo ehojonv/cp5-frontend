@@ -64,7 +64,7 @@ export default function Login() {
           <div className="flex justify-center mb-3">
             <div className="relative h-16 w-16">
               <Image 
-                src="/images/logo.svg" 
+                src="/images/logo.png" 
                 alt="Portal PCD Logo"
                 fill
                 className="object-contain"
