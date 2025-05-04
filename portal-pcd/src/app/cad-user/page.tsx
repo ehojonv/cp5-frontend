@@ -185,18 +185,6 @@ export default function CadUser() {
           </p>
         </div>
       </div>
-
-      <div className="fixed bottom-4 right-4">
-        <button 
-          aria-label="Menu de acessibilidade"
-          className="bg-blue-600 text-white rounded-full p-3 shadow-lg hover:bg-blue-700 focus:outline-none focus:ring-4 focus:ring-blue-300"
-          onClick={() => alert('Menu de acessibilidade - Implementar no futuro')}
-        >
-          <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z" />
-          </svg>
-        </button>
-      </div>
     </div>
   );
 }

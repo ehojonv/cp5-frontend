@@ -1,95 +1,73 @@
 'use client';
 
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 import { useRouter } from 'next/navigation';
-import Link from 'next/link';
 import Image from 'next/image';
-
-interface MenuItem {
-  label: string;
-  href: string;
-  action?: () => void;
-}
+import Link from 'next/link';
+import { getAuthUser, logout, isAuthenticated } from '@/utils/authHelpers';
 
 export default function Home() {
+  const [userName, setUserName] = useState('');
   const router = useRouter();
 
-  // Proteção de rota: redireciona para login se não autenticado
   useEffect(() => {
-    const hasCookie = document.cookie
-      .split(';')
-      .some(item => item.trim().startsWith('auth-token='));
-    if (!hasCookie) {
+    if (!isAuthenticated()) {
+      router.push('/login');
+      return;
+    }
+
+    const user = getAuthUser();
+    if (user) {
+      setUserName(user.name);
+    } else {
       router.push('/login');
     }
   }, [router]);
 
-  // Obtém informações do usuário a partir do cookie
-  const tokenCookie = document.cookie
-    .split(';')
-    .find(item => item.trim().startsWith('auth-token='));
-  const user = tokenCookie
-    ? JSON.parse(decodeURIComponent(tokenCookie.split('=')[1]))
-    : null;
-
   const handleLogout = () => {
-    // Expira o cookie para logout
-    document.cookie = 'auth-token=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;';
+    logout();
     router.push('/login');
   };
 
-  // Itens do menu inicial
-  const menuItems: MenuItem[] = [
-    { label: 'Listagem de Serviços', href: '/listagem' },
-    { label: 'Atualizar Perfil', href: '/update' },
-    { label: 'Logout', href: '/login', action: handleLogout }
-  ];
-
   return (
-    <div className="min-h-screen bg-gradient-to-b from-blue-50 to-purple-50 p-4">
-      {/* Cabeçalho */}
-      <header className="max-w-4xl mx-auto flex items-center justify-between py-6">
-        <div className="flex items-center space-x-3">
-          <div className="relative h-12 w-12">
-            <Image
-              src="/images/logo.png"
-              alt="Portal PCD Logo"
-              fill
-              className="object-contain"
-              priority
-            />
+    <div className="min-h-screen bg-gradient-to-b from-purple-50 to-blue-50 flex flex-col justify-center items-center p-6">
+      <div className="w-full max-w-3xl bg-white rounded-xl shadow-lg p-8 text-center">
+        <div className="mb-6">
+          <div className="flex justify-center mb-3">
+            <div className="relative h-20 w-20">
+              <Image 
+                src="/images/logo.png"
+                alt="Portal PCD Logo"
+                fill
+                className="object-contain"
+              />
+            </div>
           </div>
-          <h1 className="text-2xl font-bold text-blue-800">Portal PCD</h1>
+          <h1 className="text-3xl font-bold text-blue-800">Bem-vindo(a), {userName}</h1>
+          <p className="text-gray-600 mt-2">Escolha uma opção para continuar:</p>
         </div>
-        {user && (
-          <div className="text-gray-700">
-            Olá, <span className="font-medium">{user.name}</span>
-          </div>
-        )}
-      </header>
 
-      {/* Menu Principal */}
-      <main className="max-w-4xl mx-auto grid grid-cols-1 sm:grid-cols-2 gap-6">
-        {menuItems.map(item => (
-          item.action ? (
-            <button
-              key={item.label}
-              onClick={item.action}
-              className="bg-white rounded-xl shadow-lg p-6 text-center font-medium hover:bg-gray-50 transition"
-            >
-              {item.label}
-            </button>
-          ) : (
-            <Link
-              key={item.href}
-              href={item.href}
-              className="block bg-white rounded-xl shadow-lg p-6 text-center font-medium hover:bg-gray-50 transition"
-            >
-              {item.label}
-            </Link>
-          )
-        ))}
-      </main>
+        <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 mt-6">
+          <Link 
+            href="/listagem"
+            className="block bg-blue-600 hover:bg-blue-700 text-white py-3 px-6 rounded-lg transition-colors font-medium"
+          >
+            Listagem de Serviços
+          </Link>
+          <Link 
+            href="/update"
+            className="block bg-purple-600 hover:bg-purple-700 text-white py-3 px-6 rounded-lg transition-colors font-medium"
+          >
+            Atualizar Perfil
+          </Link>
+          <button
+            onClick={handleLogout}
+            className="col-span-1 sm:col-span-2 bg-red-500 hover:bg-red-600 text-white py-3 px-6 rounded-lg transition-colors font-medium"
+          >
+            Sair
+          </button>
+        </div>
+      </div>
     </div>
   );
 }

@@ -4,6 +4,7 @@ import { useState, FormEvent, useEffect, ChangeEvent } from 'react';
 import { useRouter } from 'next/navigation';
 import Image from 'next/image';
 import Link from 'next/link';
+import { isAuthenticated, login, getUsers } from '@/utils/authHelpers'; 
 
 export default function Login() {
   const [formData, setFormData] = useState({
@@ -16,10 +17,7 @@ export default function Login() {
   const router = useRouter();
 
   useEffect(() => {
-    const hasCookie = document.cookie
-      .split(';')
-      .some(item => item.trim().startsWith('auth-token='));
-    if (hasCookie) {
+    if (isAuthenticated()) {
       router.push('/home');
     }
   }, [router]);
@@ -41,18 +39,20 @@ export default function Login() {
         throw new Error('Por favor, preencha todos os campos');
       }
 
-      const users = JSON.parse(localStorage.getItem('users') || '[]');
-      const user = users.find((u: any) => u.email === email && u.password === password);
+      const users = getUsers();
+      const user = users.find((u) => u.email === email && u.password === password);
+      
       if (!user) {
         throw new Error('E-mail ou senha inválidos');
       }
 
       await new Promise(resolve => setTimeout(resolve, 800));
 
-      const tokenValue = JSON.stringify({ id: user.id, name: user.name, email: user.email });
-      const expirationDate = new Date();
-      expirationDate.setDate(expirationDate.getDate() + 1);
-      document.cookie = `auth-token=${encodeURIComponent(tokenValue)}; expires=${expirationDate.toUTCString()}; path=/`;
+      login({
+        id: user.id,
+        name: user.name,
+        email: user.email
+      });
 
       router.push('/home');
     } catch (err: any) {
@@ -161,7 +161,7 @@ export default function Login() {
             <button
               className="text-blue-600 hover:text-blue-800 text-sm"
               onClick={() => {
-                const users = JSON.parse(localStorage.getItem('users') || '[]');
+                const users = getUsers();
                 if (users.length === 0) {
                   localStorage.setItem(
                     'users',
@@ -179,18 +179,6 @@ export default function Login() {
             </button>
           </div>
         </div>
-      </div>
-
-      <div className="fixed bottom-4 right-4">
-        <button
-          aria-label="Menu de acessibilidade"
-          className="bg-blue-600 text-white rounded-full p-3 shadow-lg hover:bg-blue-700 focus:outline-none focus:ring-4 focus:ring-blue-300"
-          onClick={() => alert('Menu de acessibilidade - Implementar no futuro')}
-        >
-          <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z" />
-          </svg>
-        </button>
       </div>
     </div>
   );
