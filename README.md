@@ -21,8 +21,21 @@ O **Portal-PCD** é um projeto desenvolvido com o objetivo de simular a navegaç
 O Portal-PCD busca oferecer uma experiência digital inclusiva, garantindo que pessoas com deficiência possam acessar informações e navegar no site de forma simples e eficiente.
 
 ## Como usar
-Primeiro rode o projeto com:
+Primeiro clone o projeto:
+```bash
+git clone https://github.com/ehojonv/cp5-frontend.git
+```
 
+Entre na pasta do projeto com:
+```bash
+cd portal-pcd
+```
+Depois instale os pacotes necessários:
+```bash
+npm i
+```
+
+Depois rode o projeto com:
 ```bash
 npm run dev
 ```
