@@ -15,6 +15,9 @@ const geistMono = Geist_Mono({
 export const metadata: Metadata = {
   title: "Portal PCD",
   description: "CP5 de front end",
+  icons: {
+    icon: '/images/logo.png',
+  },
 };
 
 export default function RootLayout({

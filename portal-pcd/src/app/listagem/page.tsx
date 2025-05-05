@@ -31,6 +31,12 @@ export default function Listagem() {
               <p className="text-gray-600 mt-2">Clique para saber mais</p>
             </Link>
           ))}
+          <Link 
+                href="/home" 
+                className="flex-1 py-3 px-5 bg-gray-200 hover:bg-gray-300 text-gray-800 font-medium rounded-lg transition-colors text-center focus:outline-none focus:ring-4 focus:ring-gray-200"
+              >
+                Voltar
+              </Link>
         </div>
       </div>
     </main>
