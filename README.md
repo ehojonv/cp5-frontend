@@ -43,4 +43,11 @@ npm run dev
 Abra [http://localhost:3000](http://localhost:3000) com o seu browser para ver o projeto.
 
 ---
+
+# Integrantes
+- João Vinicius Alves 559369
+- Juan Pablo Coelho 560445
+- Matheus Mariotto 560276
+
+---
 Feito com ❤️ para promover a inclusão digital.
