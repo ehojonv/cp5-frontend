@@ -1,0 +1,10 @@
+export const services = [
+  { title: 'Serviços de Saúde e Reabilitação', href: 'saude', text: "Encontre clínicas de reabilitação, fisioterapia, atendimento multidisciplinar e programas de saúde pública para pessoas com deficiência. O SUS oferece atendimentos específicos em unidades adaptadas e com suporte de profissionais especializados." },
+  { title: 'Benefícios e Direitos', href: 'beneficios', text: "Informações sobre o BPC/LOAS, isenção de impostos, passe livre, aposentadoria especial e leis que garantem direitos às pessoas com deficiência, como a Lei Brasileira de Inclusão (LBI)." },
+  { title: 'Emprego e Profissionalização', href: 'emprego', text: "Acompanhe programas de inclusão no mercado de trabalho, cursos técnicos gratuitos, apoio à empregabilidade e ações afirmativas previstas na Lei de Cotas para PCDs." },
+  { title: 'Educação Inclusiva', href: 'educacao', text: "Conheça iniciativas para garantir a inclusão escolar em todos os níveis de ensino, desde o atendimento educacional especializado (AEE) até universidades com acessibilidade." },
+  { title: 'Acessibilidade Urbana e Mobilidade', href: 'mobilidade', text: "Veja como funcionam os programas de acessibilidade em transportes, calçadas adaptadas, vagas especiais e veículos acessíveis. Saiba como denunciar irregularidades." },
+  { title: 'Comunidades e Apoio Psicológico', href: 'apoio', text: "Redes de apoio emocional, grupos de convivência, apoio psicológico gratuito e espaços de troca de experiências para PCDs e familiares." },
+  { title: 'Produtos e Tecnologia Assistiva', href: 'tecnologia', text: "Descubra recursos tecnológicos como leitores de tela, próteses, órteses, softwares adaptativos e dispositivos de apoio à comunicação e mobilidade." },
+  { title: 'Denúncias e Reclamações', href: 'denuncias', text: "Saiba como registrar denúncias sobre acessibilidade, discriminação, descumprimento de leis e serviços públicos ineficientes. Utilize canais como o Disque 100 e ouvidorias municipais." },
+];
